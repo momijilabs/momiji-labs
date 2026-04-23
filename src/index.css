@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   Momiji Labs — Design Tokens
+   TODO: Replace with final brand typography when branding is complete
+   ───────────────────────────────────────────── */
+@layer base {
+  :root {
+    --color-bg-primary: #09090b;       /* zinc-950 */
+    --color-bg-secondary: #111113;     /* zinc-900 ish */
+    --color-bg-card: #18181b;          /* zinc-900 */
+    --color-bg-card-hover: #1f1f23;    /* zinc-850 ish */
+    --color-accent: #f59e0b;           /* amber-500 */
+    --color-accent-hover: #d97706;     /* amber-600 */
+    --color-accent-muted: #78350f;     /* amber-900 */
+    --color-text-primary: #fafafa;     /* zinc-50 */
+    --color-text-secondary: #a1a1aa;   /* zinc-400 */
+    --color-text-muted: #71717a;       /* zinc-500 */
+    --color-border: #27272a;           /* zinc-800 */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    /* TODO: Replace with final brand typography */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
