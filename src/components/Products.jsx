@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import { theme } from '../theme'
@@ -39,14 +39,16 @@ const STATUS_CONFIG = {
   },
   'in-development': {
     label: 'In Development',
-    className: theme.badgeClass,
-    dot: theme.badgeDot,
+    // Amber badge regardless of theme — amber = in-progress, red would read as at-risk
+    className: 'bg-amber-50 text-amber-700 border border-amber-200',
+    dot: 'bg-amber-600',
     pulse: true,
   },
 }
 
 function ProductCard({ product, index }) {
   const status = STATUS_CONFIG[product.status]
+  const [hovered, setHovered] = useState(false)
 
   return (
     // whileInView is used here (instead of useInView + animate) to avoid
@@ -56,11 +58,22 @@ function ProductCard({ product, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.55, delay: index * 0.12, ease: 'easeOut' }}
-      className="group relative flex flex-col rounded-2xl border bg-white hover:shadow-lg transition-shadow duration-300 overflow-hidden"
-      style={{ borderColor: 'var(--color-border-light)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}
+      className="group relative flex flex-col rounded-2xl border bg-white overflow-hidden"
+      style={{
+        borderColor: 'var(--color-border-light)',
+        boxShadow: hovered
+          ? `0 8px 30px var(--accent-soft-bg), 0 1px 4px rgba(0,0,0,0.06)`
+          : '0 1px 4px rgba(0,0,0,0.06)',
+        transition: 'box-shadow 0.3s ease',
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       {/* Top accent bar on hover */}
       <div className="absolute top-0 left-0 right-0 h-0.5 accent-dot scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+
+      {/* Left accent bar on hover */}
+      <div className="absolute left-0 top-0 bottom-0 w-1 accent-dot opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
       <div className="flex flex-col flex-1 p-7">
 
@@ -91,8 +104,8 @@ function ProductCard({ product, index }) {
           {product.tagline}
         </p>
 
-        {/* Description */}
-        <p className="text-sm leading-relaxed flex-1 mb-6" style={{ color: 'var(--color-text-dark-muted)' }}>
+        {/* Description — gray-600 for readable contrast */}
+        <p className="text-sm leading-relaxed flex-1 mb-6" style={{ color: 'var(--color-text-dark-secondary)' }}>
           {product.description}
         </p>
 
@@ -122,10 +135,9 @@ function ProductCard({ product, index }) {
             href={product.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-bold transition-colors group/link"
-            style={{ color: 'var(--color-text-dark-secondary)' }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-dark)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-text-dark-secondary)'}
+            className="inline-flex items-center gap-2 text-sm font-bold group/link accent-text"
+            onMouseEnter={e => e.currentTarget.style.textDecoration = 'underline'}
+            onMouseLeave={e => e.currentTarget.style.textDecoration = 'none'}
           >
             Launch App
             <ExternalLink size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
@@ -195,17 +207,16 @@ export default function Products() {
             <p className="font-semibold text-base mb-1" style={{ color: 'var(--color-text-dark)' }}>
               More products in development
             </p>
-            <p className="text-sm" style={{ color: 'var(--color-text-dark-muted)' }}>
+            <p className="text-sm" style={{ color: 'var(--color-text-dark-secondary)' }}>
               We're building more tools across health, housing, and everyday life. Stay tuned.
             </p>
           </div>
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }}
-            className="whitespace-nowrap text-sm font-semibold transition-colors cursor-pointer flex-shrink-0"
-            style={{ color: 'var(--color-text-dark-secondary)' }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-dark)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-text-dark-secondary)'}
+            className="whitespace-nowrap text-sm font-semibold cursor-pointer flex-shrink-0 accent-text"
+            onMouseEnter={e => e.currentTarget.style.textDecoration = 'underline'}
+            onMouseLeave={e => e.currentTarget.style.textDecoration = 'none'}
           >
             Get notified →
           </a>

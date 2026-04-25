@@ -12,14 +12,15 @@ export const themes = {
     accentHover:     '#B45309',               // amber-700
     accentSoftBg:    'rgba(217,119,6,0.07)',   // tinted bg (eyebrow tag, etc.)
     accentSoftBorder:'rgba(217,119,6,0.25)',   // tinted border
-    accentGlowBg:    'rgba(217,119,6,0.09)',   // hero ambient glow
+    accentGlowBg:    'rgba(217,119,6,0.09)',   // hero ambient glow (used outside hero)
     accentGlow:      'rgba(217,119,6,0.30)',   // text-shadow glow
+    heroGlowBg:      'rgba(217,119,6,0.22)',   // stronger focused glow for hero section
     // "In Development" product badge (themed to match accent)
     badgeClass:      'bg-amber-50 text-amber-700 border border-amber-200',
     badgeDot:        'bg-amber-600',
-    // Button text colour — dark text reads well on amber
-    btnText:         '#09090B',
-    btnSpinner:      'border-zinc-900/20 border-t-zinc-900',
+    // Button text colour — white text on amber for better contrast
+    btnText:         '#FAFAFA',
+    btnSpinner:      'border-white/20 border-t-white',
     // Hero background — light backdrop
     heroIsDark:      false,
     heroBg:          '#FAFAFA',               // zinc-50
@@ -32,6 +33,7 @@ export const themes = {
     accentSoftBorder:'rgba(220,38,38,0.25)',
     accentGlowBg:    'rgba(220,38,38,0.09)',
     accentGlow:      'rgba(220,38,38,0.30)',
+    heroGlowBg:      'rgba(220,38,38,0.15)',   // stronger focused glow for hero section
     // "In Development" stays amber — red would read as risk/blocked, not in-progress
     badgeClass:      'bg-amber-50 text-amber-700 border border-amber-200',
     badgeDot:        'bg-amber-600',

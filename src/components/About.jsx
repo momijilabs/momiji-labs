@@ -26,8 +26,12 @@ function ValueCard({ title, description, index }) {
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
-      className="p-6 rounded-xl border bg-white hover:shadow-md transition-shadow duration-300"
-      style={{ borderColor: 'var(--color-border-light)' }}
+      className="p-6 rounded-xl bg-white hover:shadow-md transition-shadow duration-300"
+      style={{
+        border: '1px solid var(--color-border-light)',
+        borderLeftWidth: '4px',
+        borderLeftColor: 'var(--color-accent)',
+      }}
     >
       <div className="w-2 h-2 rounded-full accent-dot mb-4" />
       <h3 className="font-semibold text-base mb-2" style={{ color: 'var(--color-text-dark)' }}>

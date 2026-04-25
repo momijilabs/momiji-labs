@@ -23,12 +23,12 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-24 pb-20 overflow-hidden"
       style={{ background: theme.heroBg }}
     >
-      {/* Ambient glow */}
+      {/* Ambient glow — tight ellipse centred on headline, fades before reaching page edges */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
-          background: `radial-gradient(ellipse 90% 60% at 50% 45%, var(--accent-glow-bg) 0%, transparent 65%)`,
+          background: `radial-gradient(ellipse 45% 38% at 50% 40%, ${theme.heroGlowBg} 0%, transparent 80%)`,
         }}
       />
 
@@ -104,18 +104,18 @@ export default function Hero() {
           </button>
           <button
             onClick={scrollToContact}
-            className="px-7 py-3.5 rounded-lg font-semibold transition-colors text-sm cursor-pointer bg-transparent"
+            className="px-7 py-3.5 rounded-lg font-semibold text-sm cursor-pointer bg-transparent transition-colors"
             style={{
-              border: `1px solid ${isDark ? '#3F3F46' : '#D4D4D8'}`,
-              color: isDark ? '#D4D4D8' : '#3F3F46',
+              border: '1.5px solid var(--color-accent)',
+              color: 'var(--color-accent)',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.borderColor = isDark ? '#71717A' : '#09090B'
-              e.currentTarget.style.color = isDark ? '#FAFAFA' : '#09090B'
+              e.currentTarget.style.borderColor = 'var(--color-accent-hover)'
+              e.currentTarget.style.color = 'var(--color-accent-hover)'
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.borderColor = isDark ? '#3F3F46' : '#D4D4D8'
-              e.currentTarget.style.color = isDark ? '#D4D4D8' : '#3F3F46'
+              e.currentTarget.style.borderColor = 'var(--color-accent)'
+              e.currentTarget.style.color = 'var(--color-accent)'
             }}
           >
             Get In Touch

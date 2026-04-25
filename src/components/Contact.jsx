@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import emailjs from '@emailjs/browser'
-import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { Mail, Send, CheckCircle, AlertCircle, MapPin, Clock, Handshake } from 'lucide-react'
 import { theme } from '../theme'
 
 // EmailJS config (client-side keys — secured via domain allowlisting in EmailJS dashboard)
@@ -19,6 +19,9 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' })
   const [status, setStatus] = useState('idle') // idle | sending | success | error
   const [emailHovered, setEmailHovered] = useState(false)
+  const [locationHovered, setLocationHovered] = useState(false)
+  const [responseHovered, setResponseHovered] = useState(false)
+  const [openToHovered, setOpenToHovered] = useState(false)
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -86,29 +89,105 @@ export default function Contact() {
               to say hello — we'd love to hear from you.
             </p>
 
-            {/* Direct email */}
-            <a
-              href={`mailto:${BUSINESS_EMAIL}`}
-              className="inline-flex items-center gap-3"
-              onMouseEnter={() => setEmailHovered(true)}
-              onMouseLeave={() => setEmailHovered(false)}
-            >
-              <span
-                className="flex items-center justify-center w-11 h-11 rounded-xl border transition-colors"
-                style={{
-                  borderColor: emailHovered ? 'var(--color-accent)' : 'var(--color-border-light-strong)',
-                  background: emailHovered ? 'var(--accent-soft-bg)' : 'var(--color-bg-light-alt)',
-                }}
+            {/* Info rows */}
+            <div className="flex flex-col gap-4">
+
+              {/* Email */}
+              <a
+                href={`mailto:${BUSINESS_EMAIL}`}
+                className="inline-flex items-center gap-3"
+                onMouseEnter={() => setEmailHovered(true)}
+                onMouseLeave={() => setEmailHovered(false)}
               >
-                <Mail size={17} className="accent-text" />
-              </span>
-              <span
-                className="text-sm font-semibold transition-colors"
-                style={{ color: emailHovered ? 'var(--color-accent)' : 'var(--color-text-dark)' }}
+                <span
+                  className="flex items-center justify-center w-11 h-11 rounded-xl border transition-colors flex-shrink-0"
+                  style={{
+                    borderColor: emailHovered ? 'var(--color-accent)' : 'var(--color-border-light-strong)',
+                    background: emailHovered ? 'var(--accent-soft-bg)' : 'var(--color-bg-light-alt)',
+                  }}
+                >
+                  <Mail size={17} className="accent-text" />
+                </span>
+                <span
+                  className="text-sm font-semibold transition-colors"
+                  style={{
+                    color: emailHovered ? 'var(--color-accent)' : 'var(--color-text-dark)',
+                    textDecoration: 'underline',
+                    textDecorationColor: 'var(--color-accent)',
+                    textUnderlineOffset: '3px',
+                    textDecorationThickness: emailHovered ? '2px' : '1px',
+                  }}
+                >
+                  {BUSINESS_EMAIL}
+                </span>
+              </a>
+
+              {/* Location */}
+              <div
+                className="inline-flex items-center gap-3 cursor-default"
+                onMouseEnter={() => setLocationHovered(true)}
+                onMouseLeave={() => setLocationHovered(false)}
               >
-                {BUSINESS_EMAIL}
-              </span>
-            </a>
+                <span
+                  className="flex items-center justify-center w-11 h-11 rounded-xl border transition-colors flex-shrink-0"
+                  style={{
+                    borderColor: locationHovered ? 'var(--color-accent)' : 'var(--color-border-light-strong)',
+                    background: locationHovered ? 'var(--accent-soft-bg)' : 'var(--color-bg-light-alt)',
+                  }}
+                >
+                  <MapPin size={17} className="accent-text" />
+                </span>
+                <span className="text-sm font-semibold" style={{ color: 'var(--color-text-dark)' }}>
+                  Vaughan, ON, Canada
+                </span>
+              </div>
+
+              {/* Response time */}
+              <div
+                className="inline-flex items-center gap-3 cursor-default"
+                onMouseEnter={() => setResponseHovered(true)}
+                onMouseLeave={() => setResponseHovered(false)}
+              >
+                <span
+                  className="flex items-center justify-center w-11 h-11 rounded-xl border transition-colors flex-shrink-0"
+                  style={{
+                    borderColor: responseHovered ? 'var(--color-accent)' : 'var(--color-border-light-strong)',
+                    background: responseHovered ? 'var(--accent-soft-bg)' : 'var(--color-bg-light-alt)',
+                  }}
+                >
+                  <Clock size={17} className="accent-text" />
+                </span>
+                <span className="text-sm font-semibold" style={{ color: 'var(--color-text-dark)' }}>
+                  We reply within 1–2 business days
+                </span>
+              </div>
+
+              {/* Open to */}
+              <div
+                className="inline-flex items-start gap-3 cursor-default"
+                onMouseEnter={() => setOpenToHovered(true)}
+                onMouseLeave={() => setOpenToHovered(false)}
+              >
+                <span
+                  className="flex items-center justify-center w-11 h-11 rounded-xl border transition-colors flex-shrink-0"
+                  style={{
+                    borderColor: openToHovered ? 'var(--color-accent)' : 'var(--color-border-light-strong)',
+                    background: openToHovered ? 'var(--accent-soft-bg)' : 'var(--color-bg-light-alt)',
+                  }}
+                >
+                  <Handshake size={17} className="accent-text" />
+                </span>
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wide block mb-0.5" style={{ color: 'var(--color-text-dark-muted)' }}>
+                    Open to
+                  </span>
+                  <span className="text-sm font-semibold" style={{ color: 'var(--color-text-dark)' }}>
+                    Partnerships, product feedback, investment inquiries & press.
+                  </span>
+                </div>
+              </div>
+
+            </div>
           </motion.div>
 
           {/* Right — form */}
@@ -202,7 +281,7 @@ export default function Contact() {
                     id="message"
                     name="message"
                     required
-                    rows={4}
+                    rows={7}
                     value={form.message}
                     onChange={handleChange}
                     placeholder="Tell us what you have in mind..."

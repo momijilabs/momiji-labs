@@ -27,17 +27,12 @@ export default function Footer() {
     >
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5">
 
-        {/* Logo + location */}
-        <div className="flex items-center gap-3">
-          <MomijiLogo
-            size={32}
-            color="#09090B"
-            accent={theme.accent}
-          />
-          <span className="text-sm" style={{ color: 'var(--color-text-dark-secondary)' }}>
-            — Vaughan, ON, Canada
-          </span>
-        </div>
+        {/* Logo */}
+        <MomijiLogo
+          size={32}
+          color="#09090B"
+          accent={theme.accent}
+        />
 
         {/* Copyright */}
         <p className="text-xs order-last sm:order-none" style={{ color: 'var(--color-text-dark-muted)' }}>
