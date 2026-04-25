@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
+import { theme } from '../theme'
 
 // Only show active products — Coming Soon cards are intentionally excluded
 // to avoid hinting at upcoming products to competitors.
@@ -38,8 +39,8 @@ const STATUS_CONFIG = {
   },
   'in-development': {
     label: 'In Development',
-    className: 'bg-amber-50 text-amber-700 border border-amber-200',
-    dot: 'bg-amber-600',
+    className: theme.badgeClass,
+    dot: theme.badgeDot,
     pulse: true,
   },
 }
@@ -58,8 +59,8 @@ function ProductCard({ product, index }) {
       className="group relative flex flex-col rounded-2xl border bg-white hover:shadow-lg transition-shadow duration-300 overflow-hidden"
       style={{ borderColor: 'var(--color-border-light)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}
     >
-      {/* Top amber accent bar on hover */}
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-amber-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+      {/* Top accent bar on hover */}
+      <div className="absolute top-0 left-0 right-0 h-0.5 accent-dot scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
       <div className="flex flex-col flex-1 p-7">
 
@@ -95,16 +96,16 @@ function ProductCard({ product, index }) {
           {product.description}
         </p>
 
-        {/* Tech pills */}
+        {/* Tech pills — accent-tinted to pick up the active theme colour */}
         <div className="flex flex-wrap gap-2 mb-6">
           {product.tech.map((t) => (
             <span
               key={t}
-              className="px-2.5 py-1 rounded-md text-xs font-medium border"
+              className="px-2.5 py-1 rounded-md text-xs font-semibold border"
               style={{
-                background: 'var(--color-bg-light-alt)',
-                color: 'var(--color-text-dark-secondary)',
-                borderColor: 'var(--color-border-light)',
+                background: 'var(--accent-soft-bg)',
+                color: 'var(--color-accent)',
+                borderColor: 'var(--accent-soft-border)',
               }}
             >
               {t}
@@ -121,7 +122,10 @@ function ProductCard({ product, index }) {
             href={product.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-bold text-amber-600 hover:text-amber-600 transition-colors group/link"
+            className="inline-flex items-center gap-2 text-sm font-bold transition-colors group/link"
+            style={{ color: 'var(--color-text-dark-secondary)' }}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-dark)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-text-dark-secondary)'}
           >
             Launch App
             <ExternalLink size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
@@ -156,7 +160,7 @@ export default function Products() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="max-w-2xl mb-14"
         >
-          <span className="text-amber-600 text-sm font-semibold uppercase tracking-widest mb-5 block">
+          <span className="accent-text text-sm font-semibold uppercase tracking-widest mb-5 block">
             Products
           </span>
           <h2
@@ -198,7 +202,10 @@ export default function Products() {
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }}
-            className="whitespace-nowrap text-sm font-semibold text-amber-600 hover:text-amber-600 transition-colors cursor-pointer flex-shrink-0"
+            className="whitespace-nowrap text-sm font-semibold transition-colors cursor-pointer flex-shrink-0"
+            style={{ color: 'var(--color-text-dark-secondary)' }}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-dark)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-text-dark-secondary)'}
           >
             Get notified →
           </a>

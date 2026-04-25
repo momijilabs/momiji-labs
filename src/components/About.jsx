@@ -29,7 +29,7 @@ function ValueCard({ title, description, index }) {
       className="p-6 rounded-xl border bg-white hover:shadow-md transition-shadow duration-300"
       style={{ borderColor: 'var(--color-border-light)' }}
     >
-      <div className="w-2 h-2 rounded-full bg-amber-600 mb-4" />
+      <div className="w-2 h-2 rounded-full accent-dot mb-4" />
       <h3 className="font-semibold text-base mb-2" style={{ color: 'var(--color-text-dark)' }}>
         {title}
       </h3>
@@ -60,7 +60,7 @@ export default function About() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="max-w-4xl mb-8"
         >
-          <span className="text-amber-600 text-xs font-semibold uppercase tracking-widest mb-5 block">
+          <span className="accent-text text-xs font-semibold uppercase tracking-widest mb-5 block">
             About
           </span>
           <h2
@@ -68,7 +68,7 @@ export default function About() {
             style={{ color: 'var(--color-text-dark)' }}
           >
             We build apps people{' '}
-            <span className="text-amber-600">actually use.</span>
+            <span className="accent-text">actually use.</span>
           </h2>
           <p
             className="text-lg leading-relaxed max-w-2xl"
@@ -82,7 +82,7 @@ export default function About() {
         </motion.div>
 
         {/* Divider */}
-        <div className="w-12 h-1 bg-amber-600 rounded-full mb-14" />
+        <div className="w-12 h-1 accent-dot rounded-full mb-14" />
 
         {/* Values grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">

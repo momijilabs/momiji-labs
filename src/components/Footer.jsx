@@ -1,4 +1,5 @@
 import MomijiLogo from './MomijiLogo'
+import { theme } from '../theme'
 
 // Inline SVGs for GitHub and LinkedIn — no brand icon library needed
 const GitHubIcon = () => (
@@ -31,7 +32,7 @@ export default function Footer() {
           <MomijiLogo
             size={32}
             color="#09090B"
-            accent="#D97706"
+            accent={theme.accent}
           />
           <span className="text-sm" style={{ color: 'var(--color-text-dark-secondary)' }}>
             — Vaughan, ON, Canada

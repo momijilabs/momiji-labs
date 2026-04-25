@@ -48,6 +48,27 @@
     font-family: var(--font-display);
   }
 
+  /* ── Themeable accent utilities ─────────────────────────────────
+     Use these instead of hardcoded Tailwind amber/red classes so
+     switching themes in theme.js propagates everywhere.          */
+  .accent-text { color: var(--color-accent); }
+
+  .accent-bg {
+    background-color: var(--color-accent);
+    transition: background-color 120ms;
+  }
+  .accent-bg:not(:disabled):hover { background-color: var(--color-accent-hover); }
+  .accent-bg:disabled { opacity: 0.55; cursor: not-allowed; }
+
+  .accent-dot { background-color: var(--color-accent); }
+
+  /* Form input focus ring — replaces hardcoded focus:ring-amber-600/20 */
+  .input-accent:focus {
+    outline: none;
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 0 0 3px var(--accent-soft-bg);
+  }
+
   * {
     box-sizing: border-box;
   }
