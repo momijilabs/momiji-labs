@@ -37,6 +37,44 @@ git checkout 1f8de58 -- src/components/Hero.jsx
 ### Contact.jsx
 8. **Email address** — changed from dark text (turning accent on hover) to accent-colored by default, with underline on hover.
 
+### App.jsx
+9. **Wrapper background** — changed `background` on the outer `<div>` from `var(--color-bg-primary)` (zinc-950 dark) to `var(--color-bg-light)`. The dark wrapper was bleeding through at page edges when the hero switched to a light background.
+
+### theme.js (continued)
+10. **`btnText` / `btnSpinner`** — added per-theme button text and spinner colours. Amber: dark text `#09090B`; Crimson: white text `#FAFAFA`.
+11. **`heroIsDark` / `heroBg` / `heroGridColor`** — added per-theme hero background properties. Amber and Crimson both use `heroIsDark: false` (light hero) with `heroBg: '#FAFAFA'` and dark grid lines.
+
+### Navbar.jsx
+12. **Button text** — Navbar CTA button now reads `theme.btnText` so it inherits the per-theme colour (consistent with Hero and Contact submit).
+
+### Hero.jsx (continued)
+13. **Glow further tightened** — ellipse reduced from `65% 45%` to `45% 38%` with `transparent 80%` stop. `heroGlowBg` increased to `rgba(217,119,6,0.22)` to compensate, keeping the glow visible but fully contained within the headline area.
+
+---
+
+## Contact section expansion — April 25 2026
+
+### Contact.jsx
+1. **Three new info rows** added below the email link (icon + text pattern, all using CSS vars — theme-transferrable):
+   - **Location** — `MapPin` icon, text: "Vaughan, ON, Canada"
+   - **Response time** — `Clock` icon, text: "We reply within 1–2 business days"
+   - **Open to** — `Handshake` icon, labelled sub-header + text: "Partnerships, product feedback, investment inquiries & press."
+2. **Email link styling** — email text colour changed from accent (amber) to dark (`--color-text-dark`) at rest, with a permanent amber underline (`textDecorationColor: var(--color-accent)`). On hover: text shifts to amber and underline thickens from 1 px to 2 px. Icon box still transitions on hover.
+3. **Textarea height** — `rows` increased from 4 to 7 to better balance the right-column form height against the four info rows on the left.
+4. **Row hover interaction** — all three static info rows (Location, Response time, Open to) now track hover state. Hovering anywhere over the row — text or icon — triggers the same icon box animation as the email row (amber border + tinted background). Rows use `cursor-default` since they are not clickable links.
+5. **"Open to" text** — removed "& collaborations" from "Partnerships & collaborations" to reduce line count and improve left/right column balance.
+
+### Footer.jsx
+6. **Location removed** — "— Vaughan, ON, Canada" span and its flex wrapper removed from the footer logo row. Location now lives exclusively in the Contact section.
+
+---
+
+## Button text colour — April 25 2026
+
+### theme.js
+- **Amber `btnText` updated** — changed from `#09090B` (near-black) to `#FAFAFA` (white). Spinner class updated from `border-zinc-900/20 border-t-zinc-900` to `border-white/20 border-t-white`. Both themes now use white button text.
+- Applies to all four amber-coloured buttons across the site: Hero CTA, Navbar desktop, Navbar mobile, Contact submit.
+
 ---
 
 *To see what changed in any file vs. baseline commit, run:*
