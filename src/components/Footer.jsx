@@ -16,8 +16,11 @@ const YEAR = new Date().getFullYear()
 export default function Footer() {
   return (
     <footer
-      className="border-t border-zinc-800 py-10 px-4"
-      style={{ background: 'var(--color-bg-primary)' }}
+      className="border-t py-10 px-4"
+      style={{
+        background: 'var(--color-bg-light-footer)',
+        borderColor: 'var(--color-border-light)',
+      }}
     >
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5">
 
@@ -25,29 +28,32 @@ export default function Footer() {
         {/* TODO: Replace with final Momiji Labs SVG logo */}
         <div className="flex items-center gap-2">
           <span
-            className="flex items-center justify-center w-7 h-7 rounded text-amber-500 font-bold text-xs border border-amber-500/20"
-            style={{ background: 'rgba(245,158,11,0.07)' }}
+            className="flex items-center justify-center w-7 h-7 rounded text-amber-500 font-bold text-xs border border-amber-500/30"
+            style={{ background: 'rgba(245,158,11,0.08)' }}
           >
             ML
           </span>
-          <span className="text-zinc-400 text-sm">
-            <span className="text-white font-medium">Momiji Labs</span>
+          <span className="text-sm" style={{ color: 'var(--color-text-dark-secondary)' }}>
+            <span className="font-semibold" style={{ color: 'var(--color-text-dark)' }}>Momiji Labs</span>
             {' '}— Vaughan, ON, Canada
           </span>
         </div>
 
         {/* Copyright */}
-        <p className="text-zinc-600 text-xs order-last sm:order-none">
+        <p className="text-xs order-last sm:order-none" style={{ color: 'var(--color-text-dark-muted)' }}>
           © {YEAR} Momiji Labs. All rights reserved.
         </p>
 
         {/* Social links */}
         <div className="flex items-center gap-4">
           <a
-            href="https://github.com/momiji-labs"
+            href="https://github.com/momijilabs"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-500 hover:text-white transition-colors"
+            className="transition-colors"
+            style={{ color: 'var(--color-text-dark-muted)' }}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-dark)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-text-dark-muted)'}
             aria-label="Momiji Labs on GitHub"
           >
             <GitHubIcon />
@@ -57,7 +63,10 @@ export default function Footer() {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-500 hover:text-white transition-colors"
+            className="transition-colors"
+            style={{ color: 'var(--color-text-dark-muted)' }}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-dark)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-text-dark-muted)'}
             aria-label="Momiji Labs on LinkedIn"
           >
             <LinkedInIcon />

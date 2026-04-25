@@ -17,26 +17,38 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-24 pb-16 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-24 pb-20 overflow-hidden"
       style={{ background: 'var(--color-bg-primary)' }}
     >
-      {/* Subtle radial glow */}
+      {/* Ambient glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse 80% 50% at 50% 40%, rgba(245,158,11,0.07) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 90% 60% at 50% 45%, rgba(245,158,11,0.09) 0%, transparent 65%)',
         }}
       />
 
-      <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center gap-6">
+      {/* Subtle grid overlay */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+        }}
+      />
+
+      <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-7">
 
         {/* Eyebrow tag */}
         <motion.div {...fadeUp(0)}>
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border border-amber-500/30 text-amber-400"
-            style={{ background: 'rgba(245,158,11,0.07)' }}>
+          <span
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border border-amber-500/25 text-amber-400 tracking-wide uppercase"
+            style={{ background: 'rgba(245,158,11,0.07)' }}
+          >
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-            Independent Software Studio
+            Independent Software Studio · Made in Canada
           </span>
         </motion.div>
 
@@ -44,55 +56,64 @@ export default function Hero() {
         {/* TODO: Replace with final Momiji Labs SVG logo above headline when branding is ready */}
         <motion.h1
           {...fadeUp(0.1)}
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight"
+          className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.07]"
         >
           Building thoughtful,{' '}
-          <span className="text-amber-500">AI-powered apps</span>{' '}
-          for everyday life.
+          <span
+            className="text-amber-500"
+            style={{ textShadow: '0 0 40px rgba(245,158,11,0.3)' }}
+          >
+            AI-powered
+          </span>
+          {' '}apps for everyday life.
         </motion.h1>
 
-        {/* Tagline */}
+        {/* Subheadline */}
         <motion.p
           {...fadeUp(0.2)}
-          className="text-lg sm:text-xl text-zinc-400 max-w-xl leading-relaxed"
+          className="text-lg sm:text-xl text-zinc-400 max-w-2xl leading-relaxed"
         >
-          Simple tools. Meaningful impact.
+          Simple tools. Meaningful impact. We build software that solves real problems —
+          for parents, landlords, commuters, and you.
         </motion.p>
 
         {/* CTAs */}
         <motion.div
           {...fadeUp(0.3)}
-          className="flex flex-col sm:flex-row gap-3 mt-2"
+          className="flex flex-col sm:flex-row gap-3 mt-1"
         >
           <button
             onClick={scrollToProducts}
-            className="px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-semibold transition-colors text-sm cursor-pointer"
+            className="px-7 py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold transition-colors text-sm cursor-pointer tracking-wide"
           >
             Explore Our Products
           </button>
           <button
             onClick={scrollToContact}
-            className="px-6 py-3 rounded-lg border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium transition-colors text-sm cursor-pointer bg-transparent"
+            className="px-7 py-3.5 rounded-lg border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-semibold transition-colors text-sm cursor-pointer bg-transparent"
           >
             Get In Touch
           </button>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll cue */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         aria-hidden="true"
       >
-        <span className="text-xs text-zinc-600">scroll</span>
-        <motion.div
+        <span className="text-zinc-500 text-xs font-medium tracking-widest uppercase">Scroll</span>
+        <motion.svg
           animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.4, ease: 'easeInOut' }}
-          className="w-px h-6 bg-gradient-to-b from-zinc-600 to-transparent"
-        />
+          transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+          width="24" height="24" viewBox="0 0 24 24" fill="none"
+          className="text-zinc-400"
+        >
+          <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </motion.svg>
       </motion.div>
     </section>
   )

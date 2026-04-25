@@ -6,17 +6,21 @@
    ───────────────────────────────────────────── */
 @layer base {
   :root {
+    /* Dark palette — used in Hero + Navbar */
     --color-bg-primary: #09090b;       /* zinc-950 */
-    --color-bg-secondary: #111113;     /* zinc-900 ish */
-    --color-bg-card: #18181b;          /* zinc-900 */
-    --color-bg-card-hover: #1f1f23;    /* zinc-850 ish */
     --color-accent: #f59e0b;           /* amber-500 */
     --color-accent-hover: #d97706;     /* amber-600 */
-    --color-accent-muted: #78350f;     /* amber-900 */
     --color-text-primary: #fafafa;     /* zinc-50 */
-    --color-text-secondary: #a1a1aa;   /* zinc-400 */
-    --color-text-muted: #71717a;       /* zinc-500 */
-    --color-border: #27272a;           /* zinc-800 */
+
+    /* Light palette — used in About, Products, Contact, Footer */
+    --color-bg-light: #ffffff;
+    --color-bg-light-alt: #f9fafb;    /* gray-50 */
+    --color-bg-light-footer: #f3f4f6; /* gray-100 */
+    --color-text-dark: #111827;       /* gray-900 */
+    --color-text-dark-secondary: #4b5563; /* gray-600 */
+    --color-text-dark-muted: #9ca3af; /* gray-400 */
+    --color-border-light: #e5e7eb;    /* gray-200 */
+    --color-border-light-strong: #d1d5db; /* gray-300 */
   }
 
   html {

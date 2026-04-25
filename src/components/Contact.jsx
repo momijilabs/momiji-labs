@@ -3,14 +3,12 @@ import { motion, useInView } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react'
 
-// EmailJS config — reuses the same account as Portfolio (service_upfitet)
-// TODO: Create a new template 'template_momijilabs_contact' in EmailJS dashboard
-//       Template variables: {{name}}, {{email}}, {{company}}, {{message}}
+// EmailJS config (client-side keys — secured via domain allowlisting in EmailJS dashboard)
 const EMAILJS_SERVICE_ID = 'service_upfitet'
-const EMAILJS_TEMPLATE_ID = 'template_ku5fh4u' // TODO: create this template
-const EMAILJS_PUBLIC_KEY = 'OptqGe4o466t2ZZKx' // TODO: replace with your EmailJS public key
+const EMAILJS_TEMPLATE_ID = 'template_ku5fh4u'
+const EMAILJS_PUBLIC_KEY = 'OptqGe4o466t2ZZKx'
 
-const BUSINESS_EMAIL = 'hello@momijilabs.com' // TODO: set up Zoho Mail when domain is ready; for now this is a placeholder
+const BUSINESS_EMAIL = 'hello@momijilabs.com' // TODO: set up Zoho Mail when domain is ready
 
 export default function Contact() {
   const ref = useRef(null)
@@ -48,13 +46,18 @@ export default function Contact() {
   }
 
   const inputClass =
-    'w-full px-4 py-3 rounded-lg border border-zinc-800 bg-zinc-900 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 transition-colors'
+    'w-full px-4 py-3 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-400'
+  const inputStyle = {
+    background: 'var(--color-bg-light)',
+    borderColor: 'var(--color-border-light-strong)',
+    color: 'var(--color-text-dark)',
+  }
 
   return (
     <section
       id="contact"
-      className="py-24 px-4"
-      style={{ background: 'var(--color-bg-secondary)' }}
+      className="py-28 px-4"
+      style={{ background: 'var(--color-bg-light)' }}
     >
       <div className="max-w-6xl mx-auto">
 
@@ -67,27 +70,35 @@ export default function Contact() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            <span className="text-amber-500 text-sm font-medium uppercase tracking-widest mb-3 block">
+            <span className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-5 block">
               Contact
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5 leading-tight">
+            <h2
+              className="text-4xl sm:text-5xl font-bold leading-tight mb-6"
+              style={{ color: 'var(--color-text-dark)' }}
+            >
               Let's build something meaningful.
             </h2>
-            <p className="text-zinc-400 text-base leading-relaxed mb-8">
+            <p className="text-lg leading-relaxed mb-10" style={{ color: 'var(--color-text-dark-secondary)' }}>
               Whether you're interested in a partnership, a product feature request, or just want
               to say hello — we'd love to hear from you.
             </p>
 
-            {/* Direct email fallback */}
+            {/* Direct email */}
             <a
               href={`mailto:${BUSINESS_EMAIL}`}
               className="inline-flex items-center gap-3 group"
             >
-              <span className="flex items-center justify-center w-10 h-10 rounded-lg border border-zinc-700 group-hover:border-amber-500/40 transition-colors"
-                style={{ background: 'var(--color-bg-card)' }}>
-                <Mail size={16} className="text-amber-500" />
+              <span
+                className="flex items-center justify-center w-11 h-11 rounded-xl border transition-colors group-hover:border-amber-400 group-hover:bg-amber-50"
+                style={{ borderColor: 'var(--color-border-light-strong)', background: 'var(--color-bg-light-alt)' }}
+              >
+                <Mail size={17} className="text-amber-500" />
               </span>
-              <span className="text-zinc-300 group-hover:text-white transition-colors text-sm font-medium">
+              <span
+                className="text-sm font-semibold transition-colors group-hover:text-amber-600"
+                style={{ color: 'var(--color-text-dark)' }}
+              >
                 {BUSINESS_EMAIL}
               </span>
             </a>
@@ -98,19 +109,25 @@ export default function Contact() {
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
-            className="rounded-xl border border-zinc-800 p-6 sm:p-8"
-            style={{ background: 'var(--color-bg-card)' }}
+            className="rounded-2xl border p-7 sm:p-9"
+            style={{
+              background: 'var(--color-bg-light)',
+              borderColor: 'var(--color-border-light)',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
+            }}
           >
             {status === 'success' ? (
               <div className="flex flex-col items-center text-center py-8 gap-4">
-                <CheckCircle size={40} className="text-emerald-400" />
-                <h3 className="text-white font-semibold text-lg">Message sent!</h3>
-                <p className="text-zinc-400 text-sm">
+                <CheckCircle size={44} className="text-emerald-500" />
+                <h3 className="font-bold text-lg" style={{ color: 'var(--color-text-dark)' }}>
+                  Message sent!
+                </h3>
+                <p className="text-sm" style={{ color: 'var(--color-text-dark-secondary)' }}>
                   Thanks for reaching out. We'll get back to you shortly.
                 </p>
                 <button
                   onClick={() => setStatus('idle')}
-                  className="mt-2 text-sm text-amber-500 hover:text-amber-400 transition-colors cursor-pointer bg-transparent border-none p-0"
+                  className="mt-2 text-sm font-semibold text-amber-600 hover:text-amber-500 transition-colors cursor-pointer bg-transparent border-none p-0"
                 >
                   Send another message
                 </button>
@@ -120,7 +137,7 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-xs text-zinc-400 mb-1.5 font-medium">
+                    <label htmlFor="name" className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ color: 'var(--color-text-dark-secondary)' }}>
                       Name <span className="text-amber-500">*</span>
                     </label>
                     <input
@@ -132,10 +149,11 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="Your name"
                       className={inputClass}
+                      style={inputStyle}
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-xs text-zinc-400 mb-1.5 font-medium">
+                    <label htmlFor="email" className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ color: 'var(--color-text-dark-secondary)' }}>
                       Email <span className="text-amber-500">*</span>
                     </label>
                     <input
@@ -147,13 +165,15 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="you@example.com"
                       className={inputClass}
+                      style={inputStyle}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-xs text-zinc-400 mb-1.5 font-medium">
-                    Company / Organization <span className="text-zinc-600">(optional)</span>
+                  <label htmlFor="company" className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ color: 'var(--color-text-dark-secondary)' }}>
+                    Company / Organization{' '}
+                    <span className="normal-case font-normal tracking-normal" style={{ color: 'var(--color-text-dark-muted)' }}>(optional)</span>
                   </label>
                   <input
                     id="company"
@@ -163,11 +183,12 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Company or clinic name"
                     className={inputClass}
+                    style={inputStyle}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs text-zinc-400 mb-1.5 font-medium">
+                  <label htmlFor="message" className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ color: 'var(--color-text-dark-secondary)' }}>
                     Message <span className="text-amber-500">*</span>
                   </label>
                   <textarea
@@ -179,11 +200,12 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Tell us what you have in mind..."
                     className={`${inputClass} resize-none`}
+                    style={inputStyle}
                   />
                 </div>
 
                 {status === 'error' && (
-                  <div className="flex items-center gap-2 text-red-400 text-sm">
+                  <div className="flex items-center gap-2 text-red-500 text-sm">
                     <AlertCircle size={14} />
                     Something went wrong. Please try emailing us directly.
                   </div>
@@ -192,11 +214,11 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="flex items-center justify-center gap-2 w-full py-3 px-6 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:bg-amber-500/50 text-zinc-950 font-semibold text-sm transition-colors cursor-pointer mt-1"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:bg-amber-300 text-zinc-950 font-bold text-sm transition-colors cursor-pointer mt-1"
                 >
                   {status === 'sending' ? (
                     <>
-                      <span className="w-4 h-4 border-2 border-zinc-950/30 border-t-zinc-950 rounded-full animate-spin" />
+                      <span className="w-4 h-4 border-2 border-zinc-900/20 border-t-zinc-900 rounded-full animate-spin" />
                       Sending…
                     </>
                   ) : (

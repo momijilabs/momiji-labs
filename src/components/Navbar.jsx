@@ -12,7 +12,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -26,7 +26,9 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800' : 'bg-transparent'
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm'
+          : 'bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,12 +43,12 @@ export default function Navbar() {
             aria-label="Momiji Labs — home"
           >
             <span
-              className="flex items-center justify-center w-8 h-8 rounded-md text-amber-500 font-bold text-sm tracking-tight border border-amber-500/30 group-hover:border-amber-500/70 transition-colors"
-              style={{ background: 'rgba(245,158,11,0.08)' }}
+              className="flex items-center justify-center w-10 h-10 rounded-md text-amber-500 font-bold text-base tracking-tight border border-amber-500/30 group-hover:border-amber-500/70 transition-colors"
+              style={{ background: 'rgba(245,158,11,0.1)' }}
             >
               ML
             </span>
-            <span className="text-white font-semibold text-base tracking-tight">
+            <span className={`font-semibold text-lg tracking-tight transition-colors duration-300 ${scrolled ? 'text-gray-900' : 'text-white'}`}>
               Momiji <span className="text-amber-500">Labs</span>
             </span>
           </a>
@@ -57,7 +59,9 @@ export default function Navbar() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0"
+                className={`text-sm font-medium transition-colors duration-300 cursor-pointer bg-transparent border-none p-0 ${
+                  scrolled ? 'text-gray-600 hover:text-gray-900' : 'text-zinc-300 hover:text-white'
+                }`}
               >
                 {link.label}
               </button>
@@ -74,14 +78,16 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-zinc-800 transition-colors"
+            className={`md:hidden flex flex-col gap-1.5 p-2 rounded-md transition-colors ${
+              scrolled ? 'hover:bg-gray-100' : 'hover:bg-white/10'
+            }`}
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
           >
-            <span className={`block h-0.5 w-5 bg-white transition-transform duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block h-0.5 w-5 bg-white transition-opacity duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block h-0.5 w-5 bg-white transition-transform duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span className={`block h-0.5 w-5 transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''} ${scrolled ? 'bg-gray-800' : 'bg-white'}`} />
+            <span className={`block h-0.5 w-5 transition-all duration-300 ${menuOpen ? 'opacity-0' : ''} ${scrolled ? 'bg-gray-800' : 'bg-white'}`} />
+            <span className={`block h-0.5 w-5 transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''} ${scrolled ? 'bg-gray-800' : 'bg-white'}`} />
           </button>
         </div>
       </div>
@@ -94,14 +100,18 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800 overflow-hidden"
+            className={`md:hidden backdrop-blur-md border-b overflow-hidden ${
+              scrolled ? 'bg-white/95 border-gray-200' : 'bg-zinc-950/95 border-zinc-800'
+            }`}
           >
             <nav className="flex flex-col px-4 py-4 gap-4" aria-label="Mobile navigation">
               {NAV_LINKS.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-left text-base text-zinc-300 hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0"
+                  className={`text-left text-base transition-colors cursor-pointer bg-transparent border-none p-0 font-medium ${
+                    scrolled ? 'text-gray-700 hover:text-gray-900' : 'text-zinc-300 hover:text-white'
+                  }`}
                 >
                   {link.label}
                 </button>

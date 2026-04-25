@@ -26,12 +26,16 @@ function ValueCard({ title, description, index }) {
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
-      className="p-6 rounded-xl border border-zinc-800 hover:border-zinc-700 transition-colors"
-      style={{ background: 'var(--color-bg-card)' }}
+      className="p-6 rounded-xl border bg-white hover:shadow-md transition-shadow duration-300"
+      style={{ borderColor: 'var(--color-border-light)' }}
     >
       <div className="w-2 h-2 rounded-full bg-amber-500 mb-4" />
-      <h3 className="text-white font-semibold text-base mb-2">{title}</h3>
-      <p className="text-zinc-400 text-sm leading-relaxed">{description}</p>
+      <h3 className="font-semibold text-base mb-2" style={{ color: 'var(--color-text-dark)' }}>
+        {title}
+      </h3>
+      <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-dark-secondary)' }}>
+        {description}
+      </p>
     </motion.div>
   )
 }
@@ -43,32 +47,42 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-24 px-4"
-      style={{ background: 'var(--color-bg-secondary)' }}
+      className="py-28 px-4"
+      style={{ background: 'var(--color-bg-light)' }}
     >
       <div className="max-w-6xl mx-auto">
 
-        {/* Header */}
+        {/* Mission statement — oversized Zapier/Anthropic style */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="max-w-2xl mb-14"
+          className="max-w-4xl mb-8"
         >
-          <span className="text-amber-500 text-sm font-medium uppercase tracking-widest mb-3 block">
+          <span className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-5 block">
             About
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5 leading-tight">
-            We build apps people actually use.
+          <h2
+            className="text-4xl sm:text-5xl font-bold leading-tight mb-6"
+            style={{ color: 'var(--color-text-dark)' }}
+          >
+            We build apps people{' '}
+            <span className="text-amber-500">actually use.</span>
           </h2>
-          <p className="text-zinc-400 text-base leading-relaxed">
+          <p
+            className="text-lg leading-relaxed max-w-2xl"
+            style={{ color: 'var(--color-text-dark-secondary)' }}
+          >
             Momiji Labs is an independent software studio based in Vaughan, Ontario. We build
             AI-powered mobile and web applications focused on real problems — parenting, housing,
             health, and everyday productivity. Every product is built to be simple enough to
             actually use, and powerful enough to make a difference.
           </p>
         </motion.div>
+
+        {/* Divider */}
+        <div className="w-12 h-1 bg-amber-500 rounded-full mb-14" />
 
         {/* Values grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
