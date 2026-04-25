@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import MomijiLogo from './MomijiLogo'
 
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
@@ -34,23 +35,18 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
-          {/* Logo */}
-          {/* TODO: Replace with final Momiji Labs SVG logo */}
+          {/* Logo — "momiji. LABS" wordmark */}
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-            className="flex items-center gap-2 group"
+            className="flex items-center"
             aria-label="Momiji Labs — home"
           >
-            <span
-              className="flex items-center justify-center w-10 h-10 rounded-md text-amber-500 font-bold text-base tracking-tight border border-amber-500/30 group-hover:border-amber-500/70 transition-colors"
-              style={{ background: 'rgba(245,158,11,0.1)' }}
-            >
-              ML
-            </span>
-            <span className={`font-semibold text-lg tracking-tight transition-colors duration-300 ${scrolled ? 'text-gray-900' : 'text-white'}`}>
-              Momiji <span className="text-amber-500">Labs</span>
-            </span>
+            <MomijiLogo
+              size={38}
+              color={scrolled ? '#09090B' : '#FAFAFA'}
+              accent="#D97706"
+            />
           </a>
 
           {/* Desktop nav */}
@@ -70,7 +66,7 @@ export default function Navbar() {
               href="https://momijilabs-aichitect.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm px-4 py-1.5 rounded-md bg-amber-500 hover:bg-amber-400 text-zinc-950 font-semibold transition-colors"
+              className="text-sm px-4 py-1.5 rounded-md bg-amber-600 hover:bg-amber-500 text-zinc-950 font-semibold transition-colors"
             >
               Try AIchitect
             </a>
@@ -120,7 +116,7 @@ export default function Navbar() {
                 href="https://momijilabs-aichitect.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex text-sm px-4 py-2 rounded-md bg-amber-500 hover:bg-amber-400 text-zinc-950 font-semibold transition-colors w-fit"
+                className="inline-flex text-sm px-4 py-2 rounded-md bg-amber-600 hover:bg-amber-500 text-zinc-950 font-semibold transition-colors w-fit"
               >
                 Try AIchitect
               </a>

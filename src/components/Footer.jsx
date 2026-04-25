@@ -1,3 +1,5 @@
+import MomijiLogo from './MomijiLogo'
+
 // Inline SVGs for GitHub and LinkedIn — no brand icon library needed
 const GitHubIcon = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
@@ -24,18 +26,15 @@ export default function Footer() {
     >
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5">
 
-        {/* Logo + name */}
-        {/* TODO: Replace with final Momiji Labs SVG logo */}
-        <div className="flex items-center gap-2">
-          <span
-            className="flex items-center justify-center w-7 h-7 rounded text-amber-500 font-bold text-xs border border-amber-500/30"
-            style={{ background: 'rgba(245,158,11,0.08)' }}
-          >
-            ML
-          </span>
+        {/* Logo + location */}
+        <div className="flex items-center gap-3">
+          <MomijiLogo
+            size={32}
+            color="#09090B"
+            accent="#D97706"
+          />
           <span className="text-sm" style={{ color: 'var(--color-text-dark-secondary)' }}>
-            <span className="font-semibold" style={{ color: 'var(--color-text-dark)' }}>Momiji Labs</span>
-            {' '}— Vaughan, ON, Canada
+            — Vaughan, ON, Canada
           </span>
         </div>
 

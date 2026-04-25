@@ -1,3 +1,6 @@
+# Branding assets — local reference only
+branding/
+
 # Planning & context documents — never commit
 master-reference.md
 general-discussions.md

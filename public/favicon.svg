@@ -1,15 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <!-- TODO: Replace with final Momiji Labs SVG logo -->
-  <rect width="32" height="32" rx="6" fill="#09090b"/>
-  <text
-    x="50%"
-    y="50%"
-    dominant-baseline="central"
-    text-anchor="middle"
-    font-family="system-ui, -apple-system, sans-serif"
-    font-size="13"
-    font-weight="700"
-    letter-spacing="-0.5"
-    fill="#F59E0B"
-  >ML</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32">
+  <!-- Momiji Labs — Tile sub-mark (amber). Rounded square with knocked-out lowercase 'm'. -->
+  <!-- Based on brand system: branding/brand-showcase/concepts-final.jsx -->
+  <defs>
+    <mask id="m-mask">
+      <rect width="100" height="100" fill="white"/>
+      <text
+        x="50"
+        y="76"
+        font-family="'Space Grotesk', ui-sans-serif, system-ui, sans-serif"
+        font-size="76"
+        font-weight="600"
+        fill="black"
+        text-anchor="middle"
+        letter-spacing="-3"
+      >m</text>
+    </mask>
+  </defs>
+  <!-- 22% corner radius per brand spec -->
+  <rect width="100" height="100" rx="22" fill="#D97706" mask="url(#m-mask)"/>
 </svg>

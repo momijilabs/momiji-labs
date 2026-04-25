@@ -29,7 +29,7 @@ function ValueCard({ title, description, index }) {
       className="p-6 rounded-xl border bg-white hover:shadow-md transition-shadow duration-300"
       style={{ borderColor: 'var(--color-border-light)' }}
     >
-      <div className="w-2 h-2 rounded-full bg-amber-500 mb-4" />
+      <div className="w-2 h-2 rounded-full bg-amber-600 mb-4" />
       <h3 className="font-semibold text-base mb-2" style={{ color: 'var(--color-text-dark)' }}>
         {title}
       </h3>
@@ -52,7 +52,7 @@ export default function About() {
     >
       <div className="max-w-6xl mx-auto">
 
-        {/* Mission statement — oversized Zapier/Anthropic style */}
+        {/* Mission statement */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 24 }}
@@ -60,15 +60,15 @@ export default function About() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="max-w-4xl mb-8"
         >
-          <span className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-5 block">
+          <span className="text-amber-600 text-xs font-semibold uppercase tracking-widest mb-5 block">
             About
           </span>
           <h2
-            className="text-4xl sm:text-5xl font-bold leading-tight mb-6"
+            className="text-4xl sm:text-5xl font-semibold leading-tight mb-6"
             style={{ color: 'var(--color-text-dark)' }}
           >
             We build apps people{' '}
-            <span className="text-amber-500">actually use.</span>
+            <span className="text-amber-600">actually use.</span>
           </h2>
           <p
             className="text-lg leading-relaxed max-w-2xl"
@@ -82,7 +82,7 @@ export default function About() {
         </motion.div>
 
         {/* Divider */}
-        <div className="w-12 h-1 bg-amber-500 rounded-full mb-14" />
+        <div className="w-12 h-1 bg-amber-600 rounded-full mb-14" />
 
         {/* Values grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">

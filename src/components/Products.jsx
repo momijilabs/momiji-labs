@@ -39,7 +39,7 @@ const STATUS_CONFIG = {
   'in-development': {
     label: 'In Development',
     className: 'bg-amber-50 text-amber-700 border border-amber-200',
-    dot: 'bg-amber-500',
+    dot: 'bg-amber-600',
     pulse: true,
   },
 }
@@ -59,7 +59,7 @@ function ProductCard({ product, index }) {
       style={{ borderColor: 'var(--color-border-light)', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}
     >
       {/* Top amber accent bar on hover */}
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-amber-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-amber-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
       <div className="flex flex-col flex-1 p-7">
 
@@ -121,7 +121,7 @@ function ProductCard({ product, index }) {
             href={product.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-bold text-amber-600 hover:text-amber-500 transition-colors group/link"
+            className="inline-flex items-center gap-2 text-sm font-bold text-amber-600 hover:text-amber-600 transition-colors group/link"
           >
             Launch App
             <ExternalLink size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
@@ -156,11 +156,11 @@ export default function Products() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="max-w-2xl mb-14"
         >
-          <span className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-5 block">
+          <span className="text-amber-600 text-sm font-semibold uppercase tracking-widest mb-5 block">
             Products
           </span>
           <h2
-            className="text-4xl sm:text-5xl font-bold leading-tight mb-5"
+            className="text-4xl sm:text-5xl font-semibold leading-tight mb-5"
             style={{ color: 'var(--color-text-dark)' }}
           >
             Tools for the moments that matter.
@@ -198,7 +198,7 @@ export default function Products() {
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }}
-            className="whitespace-nowrap text-sm font-semibold text-amber-600 hover:text-amber-500 transition-colors cursor-pointer flex-shrink-0"
+            className="whitespace-nowrap text-sm font-semibold text-amber-600 hover:text-amber-600 transition-colors cursor-pointer flex-shrink-0"
           >
             Get notified →
           </a>

@@ -20,22 +20,22 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-24 pb-20 overflow-hidden"
       style={{ background: 'var(--color-bg-primary)' }}
     >
-      {/* Ambient glow */}
+      {/* Ambient glow — using brand amber #D97706 */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse 90% 60% at 50% 45%, rgba(245,158,11,0.09) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse 90% 60% at 50% 45%, rgba(217,119,6,0.09) 0%, transparent 65%)',
         }}
       />
 
-      {/* Subtle grid overlay */}
+      {/* Subtle grid overlay — 48px per brand spec */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
+          backgroundSize: '48px 48px',
         }}
       />
 
@@ -44,31 +44,31 @@ export default function Hero() {
         {/* Eyebrow tag */}
         <motion.div {...fadeUp(0)}>
           <span
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border border-amber-500/25 text-amber-400 tracking-wide uppercase"
-            style={{ background: 'rgba(245,158,11,0.07)' }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border border-amber-600/25 text-amber-600 tracking-wide uppercase"
+            style={{ background: 'rgba(217,119,6,0.07)' }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
             Independent Software Studio · Made in Canada
           </span>
         </motion.div>
 
-        {/* Headline */}
-        {/* TODO: Replace with final Momiji Labs SVG logo above headline when branding is ready */}
+        {/* Headline — Space Grotesk 600, per brand Typography artboard */}
         <motion.h1
           {...fadeUp(0.1)}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.07]"
+          className="text-5xl sm:text-6xl lg:text-7xl tracking-tight text-white leading-[1.07]"
+          style={{ fontFamily: 'var(--font-display)', fontWeight: 600 }}
         >
           Building thoughtful,{' '}
           <span
-            className="text-amber-500"
-            style={{ textShadow: '0 0 40px rgba(245,158,11,0.3)' }}
+            className="text-amber-600"
+            style={{ textShadow: '0 0 40px rgba(217,119,6,0.3)' }}
           >
             AI-powered
           </span>
           {' '}apps for everyday life.
         </motion.h1>
 
-        {/* Subheadline */}
+        {/* Subheadline — Geist body font */}
         <motion.p
           {...fadeUp(0.2)}
           className="text-lg sm:text-xl text-zinc-400 max-w-2xl leading-relaxed"
@@ -84,7 +84,7 @@ export default function Hero() {
         >
           <button
             onClick={scrollToProducts}
-            className="px-7 py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold transition-colors text-sm cursor-pointer tracking-wide"
+            className="px-7 py-3.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-zinc-950 font-semibold transition-colors text-sm cursor-pointer tracking-wide"
           >
             Explore Our Products
           </button>

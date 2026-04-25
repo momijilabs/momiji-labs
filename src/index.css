@@ -2,14 +2,20 @@
 
 /* ─────────────────────────────────────────────
    Momiji Labs — Design Tokens
-   TODO: Replace with final brand typography when branding is complete
+   Source of truth: branding/Brand Showcase - Final.html
    ───────────────────────────────────────────── */
 @layer base {
   :root {
+    /* ── Brand fonts (matches Brand Showcase - Final.html Google Fonts import) ── */
+    --font-sans:    'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; /* all headlines + wordmark */
+    --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    --font-wordmark:'Space Grotesk', ui-sans-serif, system-ui, sans-serif; /* alias */
+
     /* Dark palette — used in Hero + Navbar */
     --color-bg-primary: #09090b;       /* zinc-950 */
-    --color-accent: #f59e0b;           /* amber-500 */
-    --color-accent-hover: #d97706;     /* amber-600 */
+    --color-accent: #d97706;           /* amber-600 — brand amber per brand showcase */
+    --color-accent-hover: #b45309;     /* amber-700 */
     --color-text-primary: #fafafa;     /* zinc-50 */
 
     /* Light palette — used in About, Products, Contact, Footer */
@@ -27,8 +33,7 @@
     scroll-behavior: smooth;
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
-    /* TODO: Replace with final brand typography */
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: var(--font-sans);
   }
 
   body {
@@ -36,6 +41,11 @@
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* All headings use the display font (Space Grotesk) per brand spec */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
   }
 
   * {

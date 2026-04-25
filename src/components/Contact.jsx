@@ -46,7 +46,7 @@ export default function Contact() {
   }
 
   const inputClass =
-    'w-full px-4 py-3 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-400'
+    'w-full px-4 py-3 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-amber-600/20 focus:border-amber-500'
   const inputStyle = {
     background: 'var(--color-bg-light)',
     borderColor: 'var(--color-border-light-strong)',
@@ -70,11 +70,11 @@ export default function Contact() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            <span className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-5 block">
+            <span className="text-amber-600 text-sm font-semibold uppercase tracking-widest mb-5 block">
               Contact
             </span>
             <h2
-              className="text-4xl sm:text-5xl font-bold leading-tight mb-6"
+              className="text-4xl sm:text-5xl font-semibold leading-tight mb-6"
               style={{ color: 'var(--color-text-dark)' }}
             >
               Let's build something meaningful.
@@ -90,10 +90,10 @@ export default function Contact() {
               className="inline-flex items-center gap-3 group"
             >
               <span
-                className="flex items-center justify-center w-11 h-11 rounded-xl border transition-colors group-hover:border-amber-400 group-hover:bg-amber-50"
+                className="flex items-center justify-center w-11 h-11 rounded-xl border transition-colors group-hover:border-amber-500 group-hover:bg-amber-50"
                 style={{ borderColor: 'var(--color-border-light-strong)', background: 'var(--color-bg-light-alt)' }}
               >
-                <Mail size={17} className="text-amber-500" />
+                <Mail size={17} className="text-amber-600" />
               </span>
               <span
                 className="text-sm font-semibold transition-colors group-hover:text-amber-600"
@@ -127,7 +127,7 @@ export default function Contact() {
                 </p>
                 <button
                   onClick={() => setStatus('idle')}
-                  className="mt-2 text-sm font-semibold text-amber-600 hover:text-amber-500 transition-colors cursor-pointer bg-transparent border-none p-0"
+                  className="mt-2 text-sm font-semibold text-amber-600 hover:text-amber-600 transition-colors cursor-pointer bg-transparent border-none p-0"
                 >
                   Send another message
                 </button>
@@ -138,7 +138,7 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ color: 'var(--color-text-dark-secondary)' }}>
-                      Name <span className="text-amber-500">*</span>
+                      Name <span className="text-amber-600">*</span>
                     </label>
                     <input
                       id="name"
@@ -154,7 +154,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ color: 'var(--color-text-dark-secondary)' }}>
-                      Email <span className="text-amber-500">*</span>
+                      Email <span className="text-amber-600">*</span>
                     </label>
                     <input
                       id="email"
@@ -189,7 +189,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="message" className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ color: 'var(--color-text-dark-secondary)' }}>
-                    Message <span className="text-amber-500">*</span>
+                    Message <span className="text-amber-600">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -214,7 +214,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:bg-amber-300 text-zinc-950 font-bold text-sm transition-colors cursor-pointer mt-1"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-lg bg-amber-600 hover:bg-amber-500 disabled:bg-amber-400 text-zinc-950 font-bold text-sm transition-colors cursor-pointer mt-1"
                 >
                   {status === 'sending' ? (
                     <>
