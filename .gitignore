@@ -6,6 +6,9 @@ master-reference.md
 general-discussions.md
 project-03-momiji-labs-website.md
 
+# Local utilities — never commit
+export-logo.html
+
 # Claude Code local settings
 .claude/
 

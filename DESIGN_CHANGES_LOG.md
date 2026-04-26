@@ -77,6 +77,35 @@ git checkout 1f8de58 -- src/components/Hero.jsx
 
 ---
 
+## Google Analytics — April 25 2026
+
+### index.html
+- Added GA4 tag (Measurement ID: `G-SLWMK5ZFWE`) immediately after the viewport `<meta>` tag, before primary meta tags
+- Two scripts: async loader from `googletagmanager.com` + inline `gtag('config', ...)` initialiser
+- Enhanced Measurement enabled in GA dashboard: page views, scrolls, outbound clicks, + 4 more (auto-tracked, no extra code)
+- Tag installation verified ✅ via GA "Test installation" tool
+- GA property: "momijilabs.com" · Stream: "Momiji Labs Website" · Data stream URL updated to `momijilabs.com` ✅
+
+---
+
+## Phase 1 Code Review Cleanup — April 26 2026
+
+### Contact.jsx
+1. **Stale TODO removed** — `// TODO: set up Zoho Mail when domain is ready` removed from `BUSINESS_EMAIL` constant (Zoho Mail has been live since April 25).
+2. **JS form validation added** — `formError` state added. `handleChange` clears `formError` on each keystroke. `handleSubmit` now checks `name`, `email`, and `message` are non-empty before calling EmailJS; if not, sets `formError` with "Please fill in all required fields." and returns early. Error displays inline above the submit button using the same `AlertCircle` pattern as the EmailJS error.
+
+### Footer.jsx
+3. **LinkedIn icon removed** — `LinkedInIcon` SVG component, its TODO comment, and the `<a>` anchor removed entirely. No Momiji Labs LinkedIn company page exists yet. When a page is created, restore a GitHub-style icon link. GitHub icon remains.
+
+### .gitignore
+4. **`export-logo.html` gitignored** — Added under a new "Local utilities" section. The file is a browser-based canvas PNG exporter for the logo; it is a local tool, not part of the shipped website.
+
+### DESIGN_CHANGES_LOG.md
+5. **Double separator fixed** — Removed duplicate `---` between the "Button text colour" and "Google Analytics" sections.
+6. **Stale GA note updated** — Data stream URL note changed from "(update to momijilabs.com once domain is live)" to "updated to momijilabs.com ✅".
+
+---
+
 *To see what changed in any file vs. baseline commit, run:*
 ```
 git diff 1f8de58 src/components/Hero.jsx

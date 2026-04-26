@@ -9,7 +9,7 @@ const EMAILJS_SERVICE_ID = 'service_upfitet'
 const EMAILJS_TEMPLATE_ID = 'template_ku5fh4u'
 const EMAILJS_PUBLIC_KEY = 'OptqGe4o466t2ZZKx'
 
-const BUSINESS_EMAIL = 'hello@momijilabs.com' // TODO: set up Zoho Mail when domain is ready
+const BUSINESS_EMAIL = 'hello@momijilabs.com'
 
 export default function Contact() {
   const ref = useRef(null)
@@ -18,6 +18,7 @@ export default function Contact() {
 
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' })
   const [status, setStatus] = useState('idle') // idle | sending | success | error
+  const [formError, setFormError] = useState('')
   const [emailHovered, setEmailHovered] = useState(false)
   const [locationHovered, setLocationHovered] = useState(false)
   const [responseHovered, setResponseHovered] = useState(false)
@@ -25,10 +26,16 @@ export default function Contact() {
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+    if (formError) setFormError('')
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setFormError('Please fill in all required fields.')
+      return
+    }
+    setFormError('')
     setStatus('sending')
     try {
       await emailjs.send(
@@ -289,6 +296,13 @@ export default function Contact() {
                     style={inputStyle}
                   />
                 </div>
+
+                {formError && (
+                  <div className="flex items-center gap-2 text-red-500 text-sm">
+                    <AlertCircle size={14} />
+                    {formError}
+                  </div>
+                )}
 
                 {status === 'error' && (
                   <div className="flex items-center gap-2 text-red-500 text-sm">
