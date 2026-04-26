@@ -95,7 +95,7 @@ git checkout 1f8de58 -- src/components/Hero.jsx
 2. **JS form validation added** — `formError` state added. `handleChange` clears `formError` on each keystroke. `handleSubmit` now checks `name`, `email`, and `message` are non-empty before calling EmailJS; if not, sets `formError` with "Please fill in all required fields." and returns early. Error displays inline above the submit button using the same `AlertCircle` pattern as the EmailJS error.
 
 ### Footer.jsx
-3. **LinkedIn icon removed** — `LinkedInIcon` SVG component, its TODO comment, and the `<a>` anchor removed entirely. No Momiji Labs LinkedIn company page exists yet. When a page is created, restore a GitHub-style icon link. GitHub icon remains.
+3. **Social icon swap** — GitHub icon removed (GitHub org not intended to be public-facing). LinkedIn icon restored with the confirmed company page URL: `https://www.linkedin.com/company/momijilabs`. `LinkedInIcon` SVG component is back; `GitHubIcon` component and its `<a>` anchor removed entirely.
 
 ### .gitignore
 4. **`export-logo.html` gitignored** — Added under a new "Local utilities" section. The file is a browser-based canvas PNG exporter for the logo; it is a local tool, not part of the shipped website.

@@ -9,6 +9,9 @@ project-03-momiji-labs-website.md
 # Local utilities — never commit
 export-logo.html
 
+# Internal brand & design reference — never commit (contains proprietary branding details)
+BRAND.md
+
 # Claude Code local settings
 .claude/
 
